@@ -48,21 +48,21 @@ export default function Timer() {
   const styles = stateStyles[timerState];
 
   return (
-    <div className={`rounded-2xl col-span-2 p-6 font-medium transition-all duration-500 ${styles.container} ${styles.pulse}`}>
-      <div className="flex items-center justify-center gap-3 mb-2">
-        <ClockIcon className={`w-5 h-5 ${styles.icon}`} />
-        <span className="text-sm font-medium tracking-wide uppercase opacity-90">
+    <div className={`rounded-xl col-span-2 p-4 font-medium transition-all duration-500 ${styles.container} ${styles.pulse}`}>
+      <div className="flex items-center justify-center gap-2 mb-1">
+        <ClockIcon className={`w-4 h-4 ${styles.icon}`} />
+        <span className="text-xs font-medium tracking-wide uppercase opacity-90">
           Tempo Restante
         </span>
       </div>
       <div className="text-center">
-        <p className={`text-4xl font-bold tracking-wider ${styles.time} drop-shadow-sm`}>
+        <p className={`text-2xl font-bold tracking-wider ${styles.time} drop-shadow-sm`}>
           {formattedTime}
         </p>
       </div>
 
       {/* Progress indicator */}
-      <div className="mt-4 bg-black/20 rounded-full h-1.5 overflow-hidden">
+      <div className="mt-2 bg-black/20 rounded-full h-1 overflow-hidden">
         <div
           className="h-full bg-white/40 rounded-full transition-all duration-1000 ease-out"
           style={{

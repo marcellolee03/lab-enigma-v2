@@ -19,13 +19,13 @@ export default function AskHelpButton() {
 
   if (showConfirmation) {
     return (
-      <div className="bg-white rounded-2xl border-2 border-amber-300 p-4 shadow-lg">
-        <div className="text-center mb-4">
-          <div className="flex justify-center mb-2">
-            <AlertIcon className="w-6 h-6 text-amber-600" />
+      <div className="bg-white rounded-xl border-2 border-amber-300 p-3 shadow-lg">
+        <div className="text-center mb-3">
+          <div className="flex justify-center mb-1">
+            <AlertIcon className="w-5 h-5 text-amber-600" />
           </div>
-          <h3 className="font-semibold text-gray-800 text-sm">Confirmar Solicitação</h3>
-          <p className="text-xs text-gray-600 mt-1">
+          <h3 className="font-semibold text-gray-800 text-xs">Confirmar Solicitação</h3>
+          <p className="text-[10px] text-gray-600 mt-1">
             3 minutos serão deduzidos do cronômetro
           </p>
         </div>
@@ -34,11 +34,11 @@ export default function AskHelpButton() {
           <button
             onClick={handleHelpRequest}
             disabled={isRequesting}
-            className="flex-1 bg-gradient-to-r from-blue-500 to-blue-700 text-white text-xs font-medium py-2 px-3 rounded-lg hover:from-blue-600 hover:to-blue-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-1 bg-gradient-to-r from-blue-500 to-blue-700 text-white text-[10px] font-medium py-1.5 px-2 rounded-md hover:from-blue-600 hover:to-blue-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isRequesting ? (
               <span className="flex items-center justify-center gap-1">
-                <div className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-2.5 h-2.5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                 Conectando...
               </span>
             ) : (
@@ -48,7 +48,7 @@ export default function AskHelpButton() {
           <button
             onClick={() => setShowConfirmation(false)}
             disabled={isRequesting}
-            className="flex-1 bg-gray-300 text-gray-700 text-xs font-medium py-2 px-3 rounded-lg hover:bg-gray-400 transition-all duration-200 disabled:opacity-50"
+            className="flex-1 bg-gray-300 text-gray-700 text-[10px] font-medium py-1.5 px-2 rounded-md hover:bg-gray-400 transition-all duration-200 disabled:opacity-50"
           >
             Cancelar
           </button>
@@ -60,30 +60,25 @@ export default function AskHelpButton() {
   return (
     <button
       onClick={() => setShowConfirmation(true)}
-      className="group bg-gradient-to-br from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white rounded-2xl px-6 py-4 font-medium shadow-lg shadow-blue-200 hover:shadow-blue-300 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] border border-blue-400/30"
+      className="group bg-gradient-to-br from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white rounded-xl px-4 py-3 font-medium shadow-lg shadow-blue-200 hover:shadow-blue-300 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] border border-blue-400/30"
     >
-      <div className="flex flex-col items-center gap-2">
-        <div className="flex items-center gap-2 mb-1">
-          <UserIcon className="w-5 h-5 text-blue-100 group-hover:text-white transition-colors" />
-          <span className="text-sm font-semibold tracking-wide">
+      <div className="flex flex-col items-center gap-1">
+        <div className="flex items-center gap-2">
+          <UserIcon className="w-4 h-4 text-blue-100 group-hover:text-white transition-colors" />
+          <span className="text-xs font-semibold tracking-wide">
             CENTRAL INB
           </span>
         </div>
 
         <div className="text-center">
-          <div className="text-xs uppercase tracking-wider opacity-90 mb-1">
+          <div className="text-[10px] uppercase tracking-wider opacity-90">
             Solicitar Auxílio
           </div>
-          <div className="text-[10px] opacity-75 leading-tight">
+          <div className="text-[8px] opacity-75 leading-tight">
             Instituto Nacional de Biossegurança
           </div>
         </div>
 
-        {/* Indicador de disponibilidade */}
-        <div className="flex items-center gap-1 mt-1">
-          <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-          <span className="text-[9px] opacity-80">Online 24/7</span>
-        </div>
       </div>
     </button>
   );
