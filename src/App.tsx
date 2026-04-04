@@ -2,7 +2,7 @@ import { useActionState } from "react";
 import type { Puzzle } from "./models/Puzzle";
 import FormContainer from "./components/form/FormContainer";
 import HandleCheck from "./actions/HandleCheck";
-import Timer from "./components/topbar/Timer";
+import IconShowcase from "./components/IconShowcase";
 
 export default function App() {
   const puzzles: Puzzle[] = [
@@ -34,6 +34,7 @@ export default function App() {
   
   return (
     <div className="mx-65 pt-50" >
+      <IconShowcase />
       <FormContainer
         puzzles={puzzles}
         formAction={formAction}

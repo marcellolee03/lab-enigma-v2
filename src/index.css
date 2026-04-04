@@ -1,2 +1,19 @@
 @import "tailwindcss";
 
+@import "tailwindcss";
+
+@theme {
+  --color-medical-white: #FFFFFF;
+
+  --color-hospital-green: #10B981;
+  --color-light-green: #DCFCE7;
+  --color-dark-green: #065F46;
+
+  --color-medical-blue: #3B82F6;
+
+  --color-alert-yellow: #F59E0B;
+  --color-critical-red: #EF4444;
+
+  --color-text-gray: #374151;
+  --color-neutral-bg: #F8FAFC;
+}
