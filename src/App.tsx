@@ -34,7 +34,6 @@ export default function App() {
   
   return (
     <div className="mx-65 pt-50" >
-      <IconShowcase />
       <FormContainer
         puzzles={puzzles}
         formAction={formAction}

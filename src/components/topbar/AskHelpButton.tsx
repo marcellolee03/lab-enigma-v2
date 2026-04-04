@@ -34,7 +34,7 @@ export default function AskHelpButton() {
           <button
             onClick={handleHelpRequest}
             disabled={isRequesting}
-            className="flex-1 bg-gradient-to-r from-blue-500 to-blue-700 text-white text-[10px] font-medium py-1.5 px-2 rounded-md hover:from-blue-600 hover:to-blue-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-1 bg-gradient-to-r from-emerald-500 to-emerald-700 text-white text-[10px] font-medium py-1.5 px-2 rounded-md hover:from-emerald-600 hover:to-emerald-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isRequesting ? (
               <span className="flex items-center justify-center gap-1">
@@ -60,11 +60,11 @@ export default function AskHelpButton() {
   return (
     <button
       onClick={() => setShowConfirmation(true)}
-      className="group bg-gradient-to-br from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white rounded-xl px-4 py-3 font-medium shadow-lg shadow-blue-200 hover:shadow-blue-300 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] border border-blue-400/30"
+      className="group bg-gradient-to-br from-emerald-500 to-emerald-700 hover:from-emerald-600 hover:to-emerald-800 text-white rounded-xl px-4 py-3 font-medium shadow-lg shadow-emerald-200 hover:shadow-emerald-300 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] border border-emerald-400/30"
     >
       <div className="flex flex-col items-center gap-1">
         <div className="flex items-center gap-2">
-          <UserIcon className="w-4 h-4 text-blue-100 group-hover:text-white transition-colors" />
+          <UserIcon className="w-4 h-4 text-emerald-100 group-hover:text-white transition-colors" />
           <span className="text-xs font-semibold tracking-wide">
             CENTRAL INB
           </span>

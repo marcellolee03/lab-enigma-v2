@@ -4,9 +4,9 @@ import { BiohazardIcon } from "../icons";
 
 export default function Topbar() {
   return (
-    <div className="fixed top-0 inset-x-0 z-50 mx-50">
+    <div className="fixed top-0  inset-x-0 z-50 mx-50">
       {/* Main topbar container */}
-      <div className="bg-gradient-to-b from-white via-gray-50 to-gray-100 border-b-2 border-emerald-200/30 shadow-2xl shadow-gray-300/50 backdrop-blur-sm">
+      <div className="bg-gradient-to-b  from-white via-gray-50 to-gray-100 border-b-2 border-emerald-200/30 shadow-2xl shadow-gray-300/50 backdrop-blur-sm">
         {/* Header bar with branding */}
         <div className="px-8 py-2 border-b border-gray-200/50">
           <div className="flex items-center justify-between">
