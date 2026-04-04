@@ -1,4 +1,4 @@
-import { type ReactNode } from "react"
+import { useCallback, type ReactNode } from "react"
 import { useContext, createContext, useState, useEffect, useRef} from "react"
 
 // CONTEXT and USECONTEXT
@@ -48,7 +48,7 @@ export function TimerProvider({ children }: TimerProviderProps) {
         
     }
 
-    function applyPenalty(penalty: number){
+    const applyPenalty = useCallback((penalty: number) => {
         setRemainingTime(prevRemainingTime => prevRemainingTime - penalty)
 
         if (timeoutRef.current) {
@@ -60,7 +60,7 @@ export function TimerProvider({ children }: TimerProviderProps) {
             setIsPenalized(false)
             timeoutRef.current = null
         },500)
-    }
+    }, [])
 
     function getIsPenalized(){
         return isPenalized
