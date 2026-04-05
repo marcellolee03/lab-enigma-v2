@@ -29,7 +29,7 @@ export default function App() {
   ]
   
   const HandleCheckWithPuzzles = HandleCheck.bind(null, puzzles);
-  const [state, formAction, isPending] = useActionState(HandleCheckWithPuzzles, null);
+  const [state, formAction] = useActionState(HandleCheckWithPuzzles, null);
   const { applyPenalty } = useTimerContext()
   
   useEffect(() => {
