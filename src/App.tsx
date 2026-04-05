@@ -8,12 +8,12 @@ export default function App() {
   const puzzles: Puzzle[] = [
     {
       id: 1,
-      question: "what color is the sky?",
+      question: "Qual e o formato da colonia?",
       answer: "blue"
     },
     {
       id: 2,
-      question: "what color is the sky?",
+      question: "Qual e a cor da regiao superior da placa?",
       answer: "blue"
     },
     {
