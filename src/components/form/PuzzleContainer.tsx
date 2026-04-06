@@ -59,4 +59,12 @@ export default function PuzzleContainer({ puzzle, name }: PuzzleContainerProps) 
       </div>
     )
   }
+  
+  ///////
+  
+  if (puzzle.answerType === AnswerTypes.matching) {
+    return (
+      <></>
+    )
+  }
 }

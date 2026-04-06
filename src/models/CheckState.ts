@@ -10,4 +10,10 @@ interface Fail {
   }
 }
 
-export type CheckState = Success | Fail
+interface InProgress {
+  type: "inProgress",
+  validatedPairs: string[],
+  mistakeMade: boolean
+}
+
+export type CheckState = Success | Fail | InProgress

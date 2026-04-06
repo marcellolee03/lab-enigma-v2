@@ -11,11 +11,10 @@ export default function HandleCheck(puzzles: Puzzle[], prevState: CheckState | n
   })
   
   const mistakes: number[] = []
-  console.log(rawData)
   
   puzzles.forEach((puzzle) => {
     const userAnswer = rawData[puzzle.id];
-    if (puzzle.answerType === AnswerTypes.checkbox && Array.isArray(userAnswer)){ 
+    if (puzzle.answerType === AnswerTypes.checkbox && Array.isArray(userAnswer)) {
       const areEqual = puzzle.answer.length === userAnswer.length && puzzle.answer.every((value, index) => value === userAnswer[index]);
       if (!areEqual) {
         mistakes.push(puzzle.id)
@@ -27,10 +26,9 @@ export default function HandleCheck(puzzles: Puzzle[], prevState: CheckState | n
     }
   })
   
-  if (mistakes.length === 0) {
+  if (mistakes.length > 0){
+    return { type: "fail" } 
+  } else { 
     return { type: "success" }
-  } else {
-    return { type: "fail" }
-  }
-    
+  };
 }
