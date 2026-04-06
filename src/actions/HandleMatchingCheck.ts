@@ -8,6 +8,10 @@ export default function HandleMatchingCheck(puzzle: Puzzle, prevState: CheckStat
     : [];
 
   if (puzzle.answerType === AnswerTypes.matching) {
+    if (!rawData[`${puzzle.id}_firstRow`] || !rawData[`${puzzle.id}_secondRow`]) {
+      return { type: "inProgress", validatedPairs: validatedPairs, mistakeMade: true}
+    }
+    
     const pair: string = rawData[`${puzzle.id}_firstRow`].toString() + rawData[`${puzzle.id}_secondRow`].toString()
     if (!puzzle.answer.includes(pair)) {
       return { type: "inProgress", validatedPairs: validatedPairs, mistakeMade: true}
