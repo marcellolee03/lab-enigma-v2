@@ -3,8 +3,8 @@ import { AnswerTypes, type Puzzle } from "./models/Puzzle";
 import HandleMatchingCheck from "./actions/HandleMatchingCheck";
 import { useTimerContext } from "./context/TimerContext";
 import MatchingContainer from "./components/matchingPuzzle/MatchingContainer";
-import FormContainer from "./components/form/FormContainer";
 import HandleCheck from "./actions/HandleCheck";
+import OrdenationContainer from "./components/ordenationPuzzle/OrdenationContainer";
 
 export default function App() {
   const matchingPuzzle: Puzzle = ( 
@@ -21,10 +21,11 @@ export default function App() {
   
   const regularPuzzles: Puzzle[] = [
     {
-      id: 1,
-      answerType: AnswerTypes.open,
-      question: "what color is the sky?",
-      answer: "blue"
+      id: 2,
+      answerType: AnswerTypes.ordenation,
+      question: "test",
+      options: [{id: 1, value: "a"}, {id: 2, value: "b"}, {id: 3, value:"c"}],
+      answer: ["a", "b", "c"]
     }
   ]
   
@@ -40,7 +41,7 @@ export default function App() {
         applyPenalty(3 * 60);
       }
     } else if (matchingState.type === "success") {
-      console.log("success");
+      console.log("matching success!");
     }
     
     if (regularState) {
@@ -49,7 +50,7 @@ export default function App() {
       }
       
       if (regularState.type === "success") {
-        console.log("state 1 success!")
+        console.log("regular success!")
       }
     }
   }, [matchingState, regularState, applyPenalty])
@@ -57,9 +58,9 @@ export default function App() {
   
   return (
     <div className="mx-65 pt-50" >
-      <FormContainer 
+      <OrdenationContainer 
+      puzzle={regularPuzzles[0]}
       formAction={regularAction}
-      puzzles={regularPuzzles}
       />
       <form
         action={matchingAction}

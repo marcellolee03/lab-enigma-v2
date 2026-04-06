@@ -8,13 +8,19 @@ export default function HandleCheck(puzzles: Puzzle[], prevState: CheckState | n
     if (puzzle.answerType === AnswerTypes.checkbox) {
       rawData[`${puzzle.id}`] = formData.getAll(`${puzzle.id}`)
     }
+    if (puzzle.answerType === AnswerTypes.ordenation) {
+      rawData[`${puzzle.id}`]= JSON.parse(formData.get(`${puzzle.id}`) as string)
+    }
   })
   
   const mistakes: number[] = []
+  console.log(rawData)
   
   puzzles.forEach((puzzle) => {
     const userAnswer = rawData[puzzle.id];
-    if (puzzle.answerType === AnswerTypes.checkbox && Array.isArray(userAnswer)) {
+    if ((puzzle.answerType === AnswerTypes.checkbox && Array.isArray(userAnswer))
+        || (puzzle.answerType === AnswerTypes.ordenation && Array.isArray(userAnswer))
+    ) {
       const areEqual = puzzle.answer.length === userAnswer.length && puzzle.answer.every((value, index) => value === userAnswer[index]);
       if (!areEqual) {
         mistakes.push(puzzle.id)
