@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnswerTypes, type Puzzle } from "../../models/Puzzle";
 
 interface OrdenationContainerProps {
   puzzle: Puzzle
   formAction: (payload: FormData) => void
+  onResetRef: React.RefObject<(() => void) | null>
 }
 
-export default function OrdenationContainer({puzzle, formAction}: OrdenationContainerProps) {
+export default function OrdenationContainer({puzzle, formAction, onResetRef}: OrdenationContainerProps) {
   const [selected, setSelected] = useState<string[]>([]);
   function handleChange(value: string, checked: boolean){
     setSelected((prev) =>
@@ -15,6 +16,10 @@ export default function OrdenationContainer({puzzle, formAction}: OrdenationCont
      : prev.filter(v => v !== value)
     )
   }
+  
+  useEffect(() => {
+    onResetRef.current = () => setSelected([]);
+  }, [onResetRef])
   
   const baseClasses = "flex flex-col shadow-2xl bg-slate-50 rounded-xl p-10 gap-5 text-left";
   if (puzzle.answerType === AnswerTypes.ordenation) {

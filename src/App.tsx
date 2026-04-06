@@ -1,4 +1,4 @@
-import { useActionState, useEffect} from "react";
+import { useActionState, useEffect, useRef, useState} from "react";
 import { AnswerTypes, type Puzzle } from "./models/Puzzle";
 import HandleMatchingCheck from "./actions/HandleMatchingCheck";
 import { useTimerContext } from "./context/TimerContext";
@@ -33,6 +33,7 @@ export default function App() {
   const HandleRegularCheckWithPuzzles = HandleCheck.bind(null, regularPuzzles);
   const [matchingState, matchingAction] = useActionState(HandleMatchingCheckWithPuzzles, { type: "inProgress", validatedPairs: [], mistakeMade: false});
   const [regularState, regularAction] = useActionState(HandleRegularCheckWithPuzzles, null);
+  const resetRef = useRef<() => void>(null);
   const { applyPenalty } = useTimerContext()
   
   useEffect(() => {
@@ -45,6 +46,7 @@ export default function App() {
     }
     
     if (regularState) {
+      resetRef.current?.();
       if (regularState.type === "fail") {
         applyPenalty(3 * 60);
       }
@@ -61,6 +63,7 @@ export default function App() {
       <OrdenationContainer 
       puzzle={regularPuzzles[0]}
       formAction={regularAction}
+      onResetRef={resetRef}
       />
       <form
         action={matchingAction}
