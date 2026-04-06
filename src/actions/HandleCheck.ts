@@ -4,6 +4,7 @@ import type { Puzzle } from "../models/Puzzle";
 export default function HandleCheck(puzzles: Puzzle[], prevState: CheckState | null, formData: FormData): CheckState {
   const rawData = Object.fromEntries(formData.entries());
   const mistakes: number[] = []
+  console.log(rawData)
   
   puzzles.forEach((puzzle) => {
     if (rawData[puzzle.id] !== puzzle.answer) {

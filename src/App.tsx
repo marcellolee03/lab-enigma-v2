@@ -1,5 +1,5 @@
 import { useActionState, useEffect} from "react";
-import type { Puzzle } from "./models/Puzzle";
+import { AnswerTypes, type Puzzle } from "./models/Puzzle";
 import FormContainer from "./components/form/FormContainer";
 import HandleCheck from "./actions/HandleCheck";
 import { useTimerContext } from "./context/TimerContext";
@@ -9,22 +9,33 @@ export default function App() {
     {
       id: 1,
       question: "what color is the sky?",
-      answer: "blue"
+      answer: "blue",
+      answerType: AnswerTypes.open
     },
     {
       id: 2,
       question: "what color is the sky?",
-      answer: "blue"
+      answer: "blue",
+      answerType: AnswerTypes.open
     },
     {
       id: 3,
       question: "what color is the sky?",
-      answer: "blue"
+      answer: "blue",
+      answerType: AnswerTypes.open
     },
     {
       id: 4,
       question: "what color is the sky?",
-      answer: "blue"
+      answer: "blue",
+      answerType: AnswerTypes.open
+    },
+    {
+      id: 5,
+      question: "what color is the sky?",
+      answer: "blue",
+      answerType: AnswerTypes.radio,
+      options: [{id: 1, value: "orange"}, {id: 2, value: "blue"}]
     }
   ]
   
