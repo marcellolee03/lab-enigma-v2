@@ -7,36 +7,12 @@ import { useTimerContext } from "./context/TimerContext";
 export default function App() {
   const puzzles: Puzzle[] = [
     {
-      id: 1,
+      id: 6,
       question: "what color is the sky?",
-      answer: "blue",
-      answerType: AnswerTypes.open
-    },
-    {
-      id: 2,
-      question: "what color is the sky?",
-      answer: "blue",
-      answerType: AnswerTypes.open
-    },
-    {
-      id: 3,
-      question: "what color is the sky?",
-      answer: "blue",
-      answerType: AnswerTypes.open
-    },
-    {
-      id: 4,
-      question: "what color is the sky?",
-      answer: "blue",
-      answerType: AnswerTypes.open
-    },
-    {
-      id: 5,
-      question: "what color is the sky?",
-      answer: "blue",
-      answerType: AnswerTypes.radio,
+      answer: ["orange", "blue"],
+      answerType: AnswerTypes.checkbox,
       options: [{id: 1, value: "orange"}, {id: 2, value: "blue"}]
-    }
+    },
   ]
   
   const HandleCheckWithPuzzles = HandleCheck.bind(null, puzzles);

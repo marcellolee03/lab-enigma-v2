@@ -1,6 +1,7 @@
 export const AnswerTypes = {
   open: "open",
   radio: "radio",
+  checkbox: "checkbox",
 } as const;
 
 export type AnswerTypes = typeof AnswerTypes[keyof typeof AnswerTypes];
@@ -25,4 +26,11 @@ type RadioPuzzle = PuzzleBase & {
   answer: string
 }
 
-export type Puzzle = OpenPuzzle | RadioPuzzle
+
+type CheckboxPuzzle = PuzzleBase & {
+  answerType: typeof AnswerTypes.checkbox
+  options: RadioPuzzleOptions[]
+  answer: string[]
+}
+
+export type Puzzle = OpenPuzzle | RadioPuzzle | CheckboxPuzzle
