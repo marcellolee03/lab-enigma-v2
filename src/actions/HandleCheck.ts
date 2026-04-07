@@ -26,8 +26,10 @@ export default function HandleCheck(puzzles: Puzzle[], prevState: CheckState | n
         mistakes.push(puzzle.id)
       }
     } else {
-      if (userAnswer !== puzzle.answer) {
-        mistakes.push(puzzle.id);
+      if (puzzle.answer) {
+        if (userAnswer !== puzzle.answer) {
+          mistakes.push(puzzle.id);
+        }
       }
     }
   })

@@ -15,7 +15,7 @@ type PuzzleBase = {
 
 type OpenPuzzle = PuzzleBase & {
   answerType: typeof AnswerTypes.open
-  answer: string
+  answer: string | null
 }
 
 interface RadioPuzzleOptions {
