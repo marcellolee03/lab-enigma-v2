@@ -3,10 +3,12 @@ import PuzzleContainer from "./PuzzleContainer"
 
 interface FormContainerProps { 
   puzzles: Puzzle[],
+  prevValidatedFields: string[],
+  onResetRef: React.RefObject<(() => void) | null>,
   formAction: (payload: FormData) => void
 }
 
-export default function FormContainer({ puzzles, formAction}: FormContainerProps) {
+export default function FormContainer({ puzzles, prevValidatedFields, onResetRef, formAction}: FormContainerProps) {
   return (
     <div className="bg-slate-100 rounded-2xl p-10 shadow-2xl col-span-2">
       <form
@@ -15,8 +17,9 @@ export default function FormContainer({ puzzles, formAction}: FormContainerProps
         <div className="flex flex-col gap-15">
           {puzzles.map((puzzle) => (
             <PuzzleContainer
+            prevValidatedFields={prevValidatedFields}
+            onResetRef={onResetRef}
             key={puzzle.id}
-            name={puzzle.id.toString()}
             puzzle={puzzle}
             />
           ))}

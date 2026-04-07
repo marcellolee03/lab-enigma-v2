@@ -1,5 +1,6 @@
 import type { CheckState } from "../models/CheckState";
 import { AnswerTypes, type Puzzle } from "../models/Puzzle";
+import HandleMatchingCheck from "./HandleMatchingCheck";
 
 export default function HandleCheck(puzzles: Puzzle[], prevState: CheckState | null, formData: FormData): CheckState {
 
@@ -14,9 +15,8 @@ export default function HandleCheck(puzzles: Puzzle[], prevState: CheckState | n
   })
   
   const mistakes: number[] = []
-  console.log(rawData)
   
-  puzzles.forEach((puzzle) => {
+  for (const puzzle of puzzles) {
     const userAnswer = rawData[puzzle.id];
     if ((puzzle.answerType === AnswerTypes.checkbox && Array.isArray(userAnswer))
         || (puzzle.answerType === AnswerTypes.ordenation && Array.isArray(userAnswer))
@@ -25,6 +25,8 @@ export default function HandleCheck(puzzles: Puzzle[], prevState: CheckState | n
       if (!areEqual) {
         mistakes.push(puzzle.id)
       }
+    } else if (puzzle.answerType === AnswerTypes.matching){
+      return HandleMatchingCheck(puzzle, prevState, formData);
     } else {
       if (puzzle.answer) {
         if (userAnswer !== puzzle.answer) {
@@ -32,7 +34,7 @@ export default function HandleCheck(puzzles: Puzzle[], prevState: CheckState | n
         }
       }
     }
-  })
+  }
   
   if (mistakes.length > 0){
     return { type: "fail" } 

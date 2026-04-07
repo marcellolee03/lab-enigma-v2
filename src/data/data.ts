@@ -58,7 +58,7 @@ export const secondForm: Puzzle[] = [
   }
 ]
 
-export const thirdForm: Puzzle = ( 
+export const thirdForm: Puzzle[] = ([
   {
     id: 7,
     answerType: AnswerTypes.matching,
@@ -79,6 +79,7 @@ export const thirdForm: Puzzle = (
     ],
     answer: ["4a", "3b", "1c", "2d"],
   }
+]
 )
 
 export const fourthForm: Puzzle[] = (

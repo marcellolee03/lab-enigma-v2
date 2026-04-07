@@ -3,6 +3,7 @@ import { AnswerTypes, type Puzzle } from "../models/Puzzle";
 
 export default function HandleMatchingCheck(puzzle: Puzzle, prevState: CheckState | null, formData: FormData): CheckState {
   const rawData: Record<string, FormDataEntryValue | FormDataEntryValue[]> = Object.fromEntries(formData.entries());
+  let isOver: boolean = false;
   let validatedPairs = prevState?.type === "inProgress"
     ? prevState.validatedPairs
     : [];
@@ -18,9 +19,13 @@ export default function HandleMatchingCheck(puzzle: Puzzle, prevState: CheckStat
     } else {
       validatedPairs = [...validatedPairs, pair];
     }
+    if (validatedPairs.length === puzzle.answer.length) {
+      isOver = true
+    } 
   }
   
-  if (validatedPairs.length === puzzle.answer.length) {
+  
+  if (isOver) {
     return { type: "success" }
   } else {
     return { type: "inProgress", validatedPairs: validatedPairs, mistakeMade: false}

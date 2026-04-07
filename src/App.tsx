@@ -1,9 +1,6 @@
 import { useActionState, useEffect, useRef} from "react";
-import HandleMatchingCheck from "./actions/HandleMatchingCheck";
 import { useTimerContext } from "./context/TimerContext";
-import MatchingContainer from "./components/matchingPuzzle/MatchingContainer";
 import HandleCheck from "./actions/HandleCheck";
-import OrdenationContainer from "./components/ordenationPuzzle/OrdenationContainer";
 import { useSecretCodeContext } from "./context/SecretCodeContext";
 import FormContainer from "./components/form/FormContainer";
 import { firstForm, fourthForm, secondForm, thirdForm } from "./data/data";
@@ -12,15 +9,15 @@ export default function App() {
   // data imports
   const firstFormPuzzles = firstForm;
   const secondFormPuzzles = secondForm;
-  const thirdFormPuzzle = thirdForm;
-  const fourthFormPuzzle = fourthForm;
+  const thirdFormPuzzles = thirdForm;
+  const fourthFormPuzzles = fourthForm;
   
   // actionStates
   // // Handle actions with arguments
   const HandleFirst = HandleCheck.bind(null, firstFormPuzzles);
   const HandleSecond = HandleCheck.bind(null, secondFormPuzzles);
-  const HandleThird = HandleMatchingCheck.bind(null, thirdFormPuzzle);
-  const HandleFourth = HandleCheck.bind(null, fourthFormPuzzle);
+  const HandleThird = HandleCheck.bind(null, thirdFormPuzzles);
+  const HandleFourth = HandleCheck.bind(null, fourthFormPuzzles);
   
   // // action states
   const [firstState, firstAction] = useActionState(HandleFirst, null);
@@ -56,6 +53,7 @@ export default function App() {
     }
 
     // third state check
+    console.log(thirdState)
     if (thirdState.type === "inProgress") {
       if (thirdState.mistakeMade) {
         applyPenalty(3 * 60);
@@ -78,48 +76,37 @@ export default function App() {
   
   
   return (
-    <div className="mx-65 pt-50 pb-50" >
-      {
-        // First form
-      }
+    <div className="mx-65 pt-50 pb-50 flex flex-col gap-7" >
       <FormContainer 
         puzzles={firstFormPuzzles}
         formAction={firstAction}
+        onResetRef={resetRef}
+        prevValidatedFields={[]}
       />
-      
-      {
-        // Second form
-      }
       
       <FormContainer
         puzzles={secondFormPuzzles}
         formAction={secondAction}
+        onResetRef={resetRef}
+        prevValidatedFields={[]}
       />
       
-      {
-        // Third form
-      }
       
-      <form
-        action={thirdAction}
-      >
-        <MatchingContainer
-          puzzle={thirdFormPuzzle}
-          prevValidatedFields={thirdState.type === "inProgress" 
-            ? thirdState.validatedPairs
-            : []
-          }
-        />
-        <button>submit</button>
-      </form>
+      <FormContainer
+        puzzles={thirdFormPuzzles}
+        formAction={thirdAction}
+        onResetRef={resetRef}
+        prevValidatedFields={thirdState.type === "inProgress"
+          ? thirdState.validatedPairs
+          : []
+        }
+      />
       
-      {
-        // Fourth form
-      }
-      <OrdenationContainer 
-      puzzle={fourthFormPuzzle[0]}
-      formAction={fourthAction}
-      onResetRef={resetRef}
+      <FormContainer
+        puzzles={fourthFormPuzzles}
+        formAction={fourthAction}
+        onResetRef={resetRef}
+        prevValidatedFields={[]}
       />
     </div>
   )

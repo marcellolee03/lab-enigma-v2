@@ -1,42 +1,36 @@
 import { AnswerTypes, type Puzzle } from "../../models/Puzzle"
+import CheckboxContainer from "./puzzleContainers/CheckboxContainer";
+import MatchingContainer from "./puzzleContainers/MatchingContainer";
+import OpenContainer from "./puzzleContainers/OpenContainer";
+import OrdenationContainer from "./puzzleContainers/OrdenationContainer";
+import RadioContainer from "./puzzleContainers/RadioContainer";
 
 interface PuzzleContainerProps {
   puzzle: Puzzle
-  name: string
+  prevValidatedFields: string[],
+  onResetRef: React.RefObject<(() => void) | null>
 }
 
-export default function PuzzleContainer({ puzzle, name }: PuzzleContainerProps) {
+export default function PuzzleContainer({ puzzle, prevValidatedFields, onResetRef }: PuzzleContainerProps) {
   const baseClasses = "flex flex-col shadow-2xl bg-slate-50 rounded-xl p-10 gap-5 text-left";
   
   if (puzzle.answerType === AnswerTypes.open) {
     return (
-      <div className={baseClasses}>
-        <p>{puzzle.question}</p>
-        <input
-          name={name}
-          className="border px-3 py-3 rounded-lg "
-        ></input>
-      </div>
+      <OpenContainer
+        puzzle={puzzle}
+        baseClasses={baseClasses}
+      />
     )
   }
   
-    ///////
+  ///////
     
   if (puzzle.answerType === AnswerTypes.radio) {
     return (
-      <div className={baseClasses}>
-        <p>{puzzle.question}</p>
-        {puzzle.options.map((option) => (
-          <label key={option.id}>
-            <input 
-            type="radio"
-            name={puzzle.id.toString()}
-            value={option.value}
-            />
-            {option.value}
-          </label>
-        ))}
-      </div>
+      <RadioContainer
+        puzzle={puzzle}
+        baseClasses={baseClasses}
+      />
     )
   }
   
@@ -44,19 +38,34 @@ export default function PuzzleContainer({ puzzle, name }: PuzzleContainerProps) 
   
   if (puzzle.answerType === AnswerTypes.checkbox) {
     return (
-      <div className={baseClasses}>
-        <p>{puzzle.question}</p>
-        {puzzle.options.map((option) => (
-          <label key={option.id}>
-            <input 
-            type="checkbox"
-            name={puzzle.id.toString()}
-            value={option.value}
-            />
-            {option.value}
-          </label>
-        ))}
-      </div>
+      <CheckboxContainer
+        puzzle={puzzle}
+        baseClasses={baseClasses}
+      />
+    )
+  }
+  
+  ///////
+  
+  if (puzzle.answerType === AnswerTypes.matching) {
+    return (
+      <MatchingContainer
+        puzzle={puzzle}
+        baseClasses={baseClasses}
+        prevValidatedFields={prevValidatedFields}
+      />
+    )
+  }
+  
+  ///////
+  
+  if (puzzle.answerType === AnswerTypes.ordenation) {
+    return (
+      <OrdenationContainer
+      puzzle={puzzle}
+      baseClasses={baseClasses}
+      onResetRef={onResetRef}
+      />
     )
   }
 }
