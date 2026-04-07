@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AnswerTypes, type Puzzle } from "../../../models/Puzzle";
+import { AnswerTypes, type Puzzle } from "../../../../models/Puzzle";
 
 interface OrdenationContainerProps {
   puzzle: Puzzle,
@@ -24,6 +24,7 @@ export default function OrdenationContainer({puzzle, baseClasses, onResetRef}: O
   if (puzzle.answerType === AnswerTypes.ordenation) {
     return (
       <div className={baseClasses}>
+        <p>{puzzle.question}</p>
           {puzzle.options.map((option) => (
             <label key={option.id}>
               <input 

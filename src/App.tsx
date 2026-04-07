@@ -76,7 +76,7 @@ export default function App() {
   
   
   return (
-    <div className="mx-65 pt-50 pb-50 flex flex-col gap-7" >
+    <div className="mx-65 pt-65 pb-50 flex flex-col gap-7" >
       <FormContainer 
         puzzles={firstFormPuzzles}
         formAction={firstAction}

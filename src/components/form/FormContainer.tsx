@@ -1,5 +1,6 @@
 import type { Puzzle } from "../../models/Puzzle"
-import PuzzleContainer from "./PuzzleContainer"
+import SubmitButton from "./pieces/SubmitButton"
+import PuzzleContainer from "./puzzleContainers/PuzzleContainer"
 
 interface FormContainerProps { 
   puzzles: Puzzle[],
@@ -10,7 +11,7 @@ interface FormContainerProps {
 
 export default function FormContainer({ puzzles, prevValidatedFields, onResetRef, formAction}: FormContainerProps) {
   return (
-    <div className="bg-slate-100 rounded-2xl p-10 shadow-2xl col-span-2">
+    <div className="bg-slate-100 rounded-2xl p-10 shadow-2xl col-span-2 ">
       <form
       action={formAction}
       >
@@ -24,7 +25,7 @@ export default function FormContainer({ puzzles, prevValidatedFields, onResetRef
             />
           ))}
           
-          <button>Submit Form</button>
+          <SubmitButton />
         </div>
       </form>
     </div>

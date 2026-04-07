@@ -1,9 +1,9 @@
-import { AnswerTypes, type Puzzle } from "../../models/Puzzle"
-import CheckboxContainer from "./puzzleContainers/CheckboxContainer";
-import MatchingContainer from "./puzzleContainers/MatchingContainer";
-import OpenContainer from "./puzzleContainers/OpenContainer";
-import OrdenationContainer from "./puzzleContainers/OrdenationContainer";
-import RadioContainer from "./puzzleContainers/RadioContainer";
+import { AnswerTypes, type Puzzle } from "../../../models/Puzzle"
+import CheckboxContainer from "./individual/CheckboxContainer";
+import MatchingContainer from "./individual/MatchingContainer";
+import OpenContainer from "./individual/OpenContainer";
+import OrdenationContainer from "./individual/OrdenationContainer";
+import RadioContainer from "./individual/RadioContainer";
 
 interface PuzzleContainerProps {
   puzzle: Puzzle

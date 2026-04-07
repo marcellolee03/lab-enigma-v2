@@ -1,4 +1,4 @@
-import { AnswerTypes, type Puzzle } from "../../../models/Puzzle"
+import { AnswerTypes, type Puzzle } from "../../../../models/Puzzle"
 
 interface OpenContainerProps {
   puzzle: Puzzle,
