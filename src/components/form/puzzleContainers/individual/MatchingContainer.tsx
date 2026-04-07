@@ -1,4 +1,5 @@
 import { AnswerTypes, type Puzzle } from "../../../../models/Puzzle"
+import PuzzleContainerHeader from "../pieces/PuzzleContainerHeader";
 
 interface MatchingContainerProps {
   puzzle: Puzzle,
@@ -15,7 +16,10 @@ export default function MatchingContainer({ puzzle, baseClasses, prevValidatedFi
   if (puzzle.answerType === AnswerTypes.matching) {
     return (
       <div className={baseClasses}>
-          <p>{puzzle.question}</p>
+        <PuzzleContainerHeader
+          question={puzzle.question}
+          hint={puzzle.hint}
+        />
           <div className="flex gap-3">
             {puzzle.firstRowOptions.map((option) => (
               <label key={option.id}>

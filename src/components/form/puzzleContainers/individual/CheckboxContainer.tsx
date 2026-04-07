@@ -1,4 +1,5 @@
 import { AnswerTypes, type Puzzle } from "../../../../models/Puzzle"
+import PuzzleContainerHeader from "../pieces/PuzzleContainerHeader"
 
 interface CheckboxContainerProps{
   puzzle: Puzzle,
@@ -9,7 +10,10 @@ export default function CheckboxContainer({ puzzle, baseClasses }: CheckboxConta
   if (puzzle.answerType === AnswerTypes.checkbox) {
     return (
       <div className={baseClasses}>
-        <p>{puzzle.question}</p>
+        <PuzzleContainerHeader
+          question={puzzle.question}
+          hint={puzzle.hint}
+        />
         {puzzle.options.map((option) => (
           <label key={option.id}>
             <input 

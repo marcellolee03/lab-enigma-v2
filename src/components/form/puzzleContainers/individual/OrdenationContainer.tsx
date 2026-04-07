@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnswerTypes, type Puzzle } from "../../../../models/Puzzle";
+import PuzzleContainerHeader from "../pieces/PuzzleContainerHeader";
 
 interface OrdenationContainerProps {
   puzzle: Puzzle,
@@ -24,8 +25,10 @@ export default function OrdenationContainer({puzzle, baseClasses, onResetRef}: O
   if (puzzle.answerType === AnswerTypes.ordenation) {
     return (
       <div className={baseClasses}>
-        <p>{puzzle.question}</p>
-        <p>{puzzle.hint}</p>
+        <PuzzleContainerHeader
+          question={puzzle.question}
+          hint={puzzle.hint}
+        />
         <div className="flex gap-3">
           {puzzle.options.map((option) => (
             <label key={option.id}>

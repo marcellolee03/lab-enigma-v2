@@ -63,6 +63,7 @@ export const thirdForm: Puzzle[] = ([
     id: 7,
     answerType: AnswerTypes.matching,
     question: "Assimile os elementos com seus respectivos pares.",
+    hint: "Envie o formulário para cada par que for validar.",
     firstRowOptions: [
       {id: 1, value: "1"}, 
       {id: 2, value: "2"}, 

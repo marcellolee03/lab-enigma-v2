@@ -16,10 +16,12 @@ export default function PuzzleContainer({ puzzle, prevValidatedFields, onResetRe
   
   if (puzzle.answerType === AnswerTypes.open) {
     return (
-      <OpenContainer
-        puzzle={puzzle}
-        baseClasses={baseClasses}
-      />
+      <>
+        <OpenContainer
+          puzzle={puzzle}
+          baseClasses={baseClasses}
+        />
+      </>
     )
   }
   
