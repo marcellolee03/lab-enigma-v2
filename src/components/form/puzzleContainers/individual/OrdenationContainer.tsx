@@ -25,6 +25,8 @@ export default function OrdenationContainer({puzzle, baseClasses, onResetRef}: O
     return (
       <div className={baseClasses}>
         <p>{puzzle.question}</p>
+        <p>{puzzle.hint}</p>
+        <div className="flex gap-3">
           {puzzle.options.map((option) => (
             <label key={option.id}>
               <input 
@@ -35,6 +37,7 @@ export default function OrdenationContainer({puzzle, baseClasses, onResetRef}: O
               {option.value}
             </label>
           ))}
+        </div>
           <input 
             type="hidden"
             name={puzzle.id.toString()}

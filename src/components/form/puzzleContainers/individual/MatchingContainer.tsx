@@ -16,7 +16,7 @@ export default function MatchingContainer({ puzzle, baseClasses, prevValidatedFi
     return (
       <div className={baseClasses}>
           <p>{puzzle.question}</p>
-          <div className="flex">
+          <div className="flex gap-3">
             {puzzle.firstRowOptions.map((option) => (
               <label key={option.id}>
                 <input 
@@ -30,7 +30,7 @@ export default function MatchingContainer({ puzzle, baseClasses, prevValidatedFi
             ))}
           </div>
           
-          <div className="flex">
+          <div className="flex gap-3">
             {puzzle.secondRowOptions.map((option) => (
               <label key={option.id}>
                 <input 

@@ -62,7 +62,7 @@ export const thirdForm: Puzzle[] = ([
   {
     id: 7,
     answerType: AnswerTypes.matching,
-    question: "what color is the sky?",
+    question: "Assimile os elementos com seus respectivos pares.",
     firstRowOptions: [
       {id: 1, value: "1"}, 
       {id: 2, value: "2"}, 
@@ -87,7 +87,8 @@ export const fourthForm: Puzzle[] = (
     {
       id: 8,
       answerType: AnswerTypes.ordenation,
-      question: "Ordene de acordo",
+      question: "Siga as pistas para encontrar os equipamentos. Depois, selecione-os na ordem em que foram descobertos.",
+      hint: 'Primeira pista: "Nos olhos do microbiologista"',
       options: [
         { id: 1, value: "Meio de cultura"},
         { id: 2, value: "Microscópio"},

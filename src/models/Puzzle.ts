@@ -11,6 +11,7 @@ export type AnswerTypes = typeof AnswerTypes[keyof typeof AnswerTypes];
 type PuzzleBase = {
   id: number,
   question: string,
+  hint?: string
 }
 
 type OpenPuzzle = PuzzleBase & {
