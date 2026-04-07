@@ -1,10 +1,11 @@
-import { useActionState, useEffect, useRef, useState} from "react";
+import { useActionState, useEffect, useRef} from "react";
 import { AnswerTypes, type Puzzle } from "./models/Puzzle";
 import HandleMatchingCheck from "./actions/HandleMatchingCheck";
 import { useTimerContext } from "./context/TimerContext";
 import MatchingContainer from "./components/matchingPuzzle/MatchingContainer";
 import HandleCheck from "./actions/HandleCheck";
 import OrdenationContainer from "./components/ordenationPuzzle/OrdenationContainer";
+import { useSecretCodeContext } from "./context/SecretCodeContext";
 
 export default function App() {
   const matchingPuzzle: Puzzle = ( 
@@ -12,9 +13,9 @@ export default function App() {
       id: 6,
       answerType: AnswerTypes.matching,
       question: "what color is the sky?",
-      answer: ["blueorange", "orangeblue", "6767"],
-      firstRowOptions: [{id: 1, value: "orange"}, {id: 2, value: "blue"}, {id: 3, value: "67"}],
-      secondRowOptions: [{id: 1, value: "orange"}, {id: 2, value: "blue"}, {id: 3, value: "67"}],
+      answer: ["a1", "b2", "c3"],
+      firstRowOptions: [{id: 1, value: "a"}, {id: 2, value: "b"}, {id: 3, value: "c"}],
+      secondRowOptions: [{id: 1, value: "1"}, {id: 2, value: "2"}, {id: 3, value: "3"}],
     }
   )
 
@@ -35,6 +36,7 @@ export default function App() {
   const [regularState, regularAction] = useActionState(HandleRegularCheckWithPuzzles, null);
   const resetRef = useRef<() => void>(null);
   const { applyPenalty } = useTimerContext()
+  const { revealPartOfCode } = useSecretCodeContext();
   
   useEffect(() => {
     if (matchingState.type === "inProgress") {
@@ -42,6 +44,7 @@ export default function App() {
         applyPenalty(3 * 60);
       }
     } else if (matchingState.type === "success") {
+      revealPartOfCode(1);
       console.log("matching success!");
     }
     
@@ -52,10 +55,11 @@ export default function App() {
       }
       
       if (regularState.type === "success") {
+        revealPartOfCode(0);
         console.log("regular success!")
       }
     }
-  }, [matchingState, regularState, applyPenalty])
+  }, [matchingState, regularState, applyPenalty, revealPartOfCode])
   
   
   return (
