@@ -53,8 +53,9 @@ export const secondForm: Puzzle[] = [
       {id: 4, value: "Penicilina"},
       {id: 5, value: "Nitrofurantoina"},
       {id: 6, value: "Ceftriaxona"},
+      {id: 7, value: "Eritromicina"}
     ],
-    answer: ["Vancomicina", "Ceftriaxona"]
+    answer: ["Vancomicina", "Nitrofurantoina", "Tetraciclina", "Ceftriaxona", "Novobiocina", "Eritromicina"]
   }
 ]
 
