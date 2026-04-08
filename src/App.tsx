@@ -78,6 +78,7 @@ export default function App() {
   return (
     <div className="mx-65 pt-65 pb-50 flex flex-col gap-7" >
       <FormContainer 
+        title="Formulário de Análise 1"
         puzzles={firstFormPuzzles}
         formAction={firstAction}
         onResetRef={resetRef}
@@ -85,6 +86,7 @@ export default function App() {
       />
       
       <FormContainer
+        title="Formulário de Análise 2"
         puzzles={secondFormPuzzles}
         formAction={secondAction}
         onResetRef={resetRef}
@@ -93,6 +95,7 @@ export default function App() {
       
       
       <FormContainer
+        title="Formulário de Análise 3"
         puzzles={thirdFormPuzzles}
         formAction={thirdAction}
         onResetRef={resetRef}
@@ -103,6 +106,7 @@ export default function App() {
       />
       
       <FormContainer
+        title="Formulário de Análise 4"
         puzzles={fourthFormPuzzles}
         formAction={fourthAction}
         onResetRef={resetRef}
