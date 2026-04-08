@@ -19,7 +19,7 @@ interface SecretCodeProviderProps {
     children: ReactNode
 }
 
-const secretCode: string[] = ["6", "7", "8", "9"];
+const secretCode: string[] = ["6", "3", "8", "4"];
 export function SecretCodeProvider({ children }: SecretCodeProviderProps) {
   const [revealedCode, setRevealedCode] = useState<string[]>(["", "", "", ""]);
   

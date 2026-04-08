@@ -36,6 +36,7 @@ export default function HandleCheck(puzzles: Puzzle[], prevState: CheckState | n
     }
   }
   
+  console.log(mistakes);
   if (mistakes.length > 0){
     return { type: "fail" } 
   } else { 

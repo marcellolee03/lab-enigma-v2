@@ -31,7 +31,7 @@ export function TimerProvider({ children }: TimerProviderProps) {
     const timeoutRef = useRef<number | null>(null)
 
     // Timer logic
-    const [ remainingTime, setRemainingTime ] = useState<number>(40 * 60)
+    const [ remainingTime, setRemainingTime ] = useState<number>(30 * 60)
     useEffect(() => {
         if (remainingTime === 0) return
 

@@ -48,14 +48,10 @@ export const secondForm: Puzzle[] = [
     question: "A bacteria é sensível à quais antibióticos testados?",
     options: [
       {id: 1, value: "Tetraciclina"},
-      {id: 2, value: "Novobiocina"},
-      {id: 3, value: "Vancomicina"},
-      {id: 4, value: "Penicilina"},
-      {id: 5, value: "Nitrofurantoina"},
-      {id: 6, value: "Ceftriaxona"},
-      {id: 7, value: "Eritromicina"}
+      {id: 2, value: "Penicilina"},
+      {id: 3, value: "Nitrofurantoina"},
     ],
-    answer: ["Vancomicina", "Nitrofurantoina", "Tetraciclina", "Ceftriaxona", "Novobiocina", "Eritromicina"]
+    answer: ["Tetraciclina", "Nitrofurantoina"]
   }
 ]
 
@@ -89,8 +85,7 @@ export const fourthForm: Puzzle[] = (
     {
       id: 8,
       answerType: AnswerTypes.ordenation,
-      question: "Siga as pistas para encontrar os equipamentos. Depois, selecione-os na ordem em que foram descobertos.",
-      hint: 'Primeira pista: "Nos olhos do microbiologista"',
+      question: "Nos olhos do microbiologista...",
       options: [
         { id: 1, value: "Meio de cultura"},
         { id: 2, value: "Microscópio"},
@@ -98,6 +93,17 @@ export const fourthForm: Puzzle[] = (
         { id: 4, value: "Fluxo laminar"}
       ],
       answer: ["Microscópio", "Autoclave", "Meio de cultura", "Fluxo laminar"]
+    }
+  ]
+)
+
+export const finalForm: Puzzle[] = (
+  [
+    {
+      id: 9,
+      answerType: AnswerTypes.open,
+      question: "Qual é o nome da bactéria?",
+      answer: "pantojas paixoes",
     }
   ]
 )
