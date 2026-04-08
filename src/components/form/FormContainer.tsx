@@ -18,7 +18,8 @@ export default function FormContainer({ title, puzzles, prevValidatedFields, onR
         title={title}
       />
       <form
-      action={formAction}
+        autoComplete="off"
+        action={formAction}
       >
         <div className="flex flex-col gap-10">
           {puzzles.map((puzzle) => (
