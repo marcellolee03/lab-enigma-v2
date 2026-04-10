@@ -8,9 +8,12 @@ import Topbar from "./components/topbar/Topbar";
 import Bottombar from "./components/bottombar/Bottombar";
 import { useNavigate } from "react-router-dom";
 import { DelayComponent } from "./lib/DelayComponent";
+import { useToast } from "./lib/Toast";
 
 export default function App() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const toaster = useToast();
+  const toasted = useRef(false);
   
   // data imports
   const firstFormPuzzles = firstForm;
@@ -62,7 +65,6 @@ export default function App() {
     }
 
     // third state check
-    console.log(thirdState)
     if (thirdState.type === "inProgress") {
       if (thirdState.mistakeMade) {
         applyPenalty(1 * 60);
@@ -93,6 +95,17 @@ export default function App() {
     }
   }, [firstState, secondState, thirdState, fourthState, finalState, applyPenalty, revealPartOfCode, navigate])
   
+  useEffect(() => {
+    if (!toasted.current){
+      toaster.custom(
+        { type: "loading",
+          title: "Recebendo formulários...",
+          duration: 6000, 
+          onDone: () => toaster.success("Formulários recebidos com sucesso. Boa sorte.")}
+      );
+      toasted.current = true;
+    }
+  }, [toaster])
   
   return (
     <>
