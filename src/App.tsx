@@ -3,12 +3,13 @@ import { useTimerContext } from "./context/TimerContext";
 import HandleCheck from "./actions/HandleCheck";
 import { useSecretCodeContext } from "./context/SecretCodeContext";
 import FormContainer from "./components/form/FormContainer";
-import { finalForm, firstForm, fourthForm, secondForm, thirdForm } from "./data/data";
+import { data, finalForm, firstForm, fourthForm, secondForm, thirdForm } from "./data/data";
 import Topbar from "./components/topbar/Topbar";
 import Bottombar from "./components/bottombar/Bottombar";
 import { useNavigate } from "react-router-dom";
 import { DelayComponent } from "./lib/DelayComponent";
 import { useToast } from "./lib/Toast";
+import { PuzzleStates } from "./PuzzleStates";
 
 export default function App() {
   const navigate = useNavigate();
@@ -16,6 +17,9 @@ export default function App() {
   const toasted = useRef(false);
   
   // data imports
+  const forms = data
+  PuzzleStates(forms)
+  
   const firstFormPuzzles = firstForm;
   const secondFormPuzzles = secondForm;
   const thirdFormPuzzles = thirdForm;
