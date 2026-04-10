@@ -7,6 +7,7 @@ import { finalForm, firstForm, fourthForm, secondForm, thirdForm } from "./data/
 import Topbar from "./components/topbar/Topbar";
 import Bottombar from "./components/bottombar/Bottombar";
 import { useNavigate } from "react-router-dom";
+import { DelayComponent } from "./lib/DelayComponent";
 
 export default function App() {
   const navigate = useNavigate()
@@ -97,50 +98,62 @@ export default function App() {
     <>
       <Topbar />
       <div className="mx-65 pt-65 pb-50 flex flex-col gap-7" >
-        <FormContainer 
-          title="Formulário de Análise 1"
-          puzzles={firstFormPuzzles}
-          formAction={firstAction}
-          onResetRef={resetRef}
-          prevValidatedFields={[]}
-        />
+        <DelayComponent wait={5000}>
+          <FormContainer 
+            title="Formulário de Análise 1"
+            puzzles={firstFormPuzzles}
+            formAction={firstAction}
+            onResetRef={resetRef}
+            prevValidatedFields={[]}
+          />
+        </DelayComponent>
+
+
         
-        <FormContainer
-          title="Formulário de Análise 2"
-          puzzles={secondFormPuzzles}
-          formAction={secondAction}
-          onResetRef={resetRef}
-          prevValidatedFields={[]}
-        />
-        
-        
-        <FormContainer
-          title="Formulário de Análise 3"
-          puzzles={thirdFormPuzzles}
-          formAction={thirdAction}
-          onResetRef={resetRef}
-          prevValidatedFields={thirdState.type === "inProgress"
-            ? thirdState.validatedPairs
-            : []
-          }
-        />
-        
-        <FormContainer
-          title="Formulário de Análise 4"
-          puzzles={fourthFormPuzzles}
-          formAction={fourthAction}
-          onResetRef={resetRef}
-          prevValidatedFields={[]}
-        />
+        <DelayComponent wait={4000}>
+          <FormContainer
+            title="Formulário de Análise 2"
+            puzzles={secondFormPuzzles}
+            formAction={secondAction}
+            onResetRef={resetRef}
+            prevValidatedFields={[]}
+          />
+        </DelayComponent>
         
         
-        <FormContainer
-          title="Análise Final"
-          puzzles={finalFormPuzzle}
-          formAction={finalAction}
-          onResetRef={resetRef}
-          prevValidatedFields={[]}
-        />
+        <DelayComponent wait={3000}>
+          <FormContainer
+            title="Formulário de Análise 3"
+            puzzles={thirdFormPuzzles}
+            formAction={thirdAction}
+            onResetRef={resetRef}
+            prevValidatedFields={thirdState.type === "inProgress"
+              ? thirdState.validatedPairs
+              : []
+            }
+          />
+        </DelayComponent>
+        
+        <DelayComponent wait={2000}>
+          <FormContainer
+            title="Formulário de Análise 4"
+            puzzles={fourthFormPuzzles}
+            formAction={fourthAction}
+            onResetRef={resetRef}
+            prevValidatedFields={[]}
+          />
+        </DelayComponent>
+        
+        
+        <DelayComponent wait={1000}>
+          <FormContainer
+            title="Análise Final"
+            puzzles={finalFormPuzzle}
+            formAction={finalAction}
+            onResetRef={resetRef}
+            prevValidatedFields={[]}
+          />
+        </DelayComponent>
       </div>
       <Bottombar />
     </>

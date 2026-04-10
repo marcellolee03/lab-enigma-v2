@@ -13,7 +13,7 @@ interface FormContainerProps {
 
 export default function FormContainer({ title, puzzles, prevValidatedFields, onResetRef, formAction}: FormContainerProps) {
   return (
-    <div className="bg-slate-100 rounded-2xl p-10 shadow-2xl col-span-2 flex flex-col gap-13">
+    <div className="bg-slate-100 rounded-2xl p-10 shadow-2xl col-span-2 flex flex-col gap-13 animate-slide-in">
       <FormContainerHeader
         title={title}
       />
