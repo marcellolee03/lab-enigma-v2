@@ -4,10 +4,6 @@ interface Success {
 
 interface Fail {
   type: "fail";
-  error?: string;
-  details?: {
-    [key: string]: { errors: string[] }
-  }
 }
 
 interface InProgress {
@@ -16,4 +12,12 @@ interface InProgress {
   mistakeMade: boolean
 }
 
-export type CheckState = Success | Fail | InProgress
+interface Error {
+  type: "error",
+  error?: string;
+  details?: {
+    [key: string]: { errors: string[] }
+  }
+}
+
+export type CheckState = Success | Fail | InProgress | Error
