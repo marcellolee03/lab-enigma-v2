@@ -51,11 +51,11 @@ export const data: Form[] = [
         answerType: AnswerTypes.checkbox,
         question: "A bacteria é sensível à quais antibióticos testados?",
         options: [
-          {id: 1, value: "Tetraciclina"},
+          {id: 1, value: "Eritromicina"},
           {id: 2, value: "Penicilina"},
-          {id: 3, value: "Nitrofurantoina"},
+          {id: 3, value: "Tetraciclina"},
         ],
-        answer: ["Tetraciclina", "Nitrofurantoina"]
+        answer: ["Eritromicina", "Tetraciclina"]
       }
     ]
   },
