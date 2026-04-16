@@ -1,14 +1,14 @@
 import { useEffect, useRef} from "react";
-import { useTimerContext } from "./context/TimerContext";
-import { useSecretCodeContext } from "./context/SecretCodeContext";
-import FormContainer from "./components/form/FormContainer";
-import { data } from "./data/data";
-import Topbar from "./components/topbar/Topbar";
-import Bottombar from "./components/bottombar/Bottombar";
+import { useTimerContext } from "../context/TimerContext";
+import { useSecretCodeContext } from "../context/SecretCodeContext";
+import FormContainer from "../components/form/FormContainer";
+import { data } from "../data/data";
+import Topbar from "../components/topbar/Topbar";
+import Bottombar from "../components/bottombar/Bottombar";
 import { useNavigate } from "react-router-dom";
-import { DelayComponent } from "./lib/DelayComponent";
-import { useToast } from "./lib/Toast";
-import { useFormStates } from "./lib/useFormStates";
+import { DelayComponent } from "../lib/DelayComponent";
+import { useToast } from "../lib/Toast";
+import { useFormStates } from "../lib/useFormStates";
 
 export default function App() {
   const navigate = useNavigate();
