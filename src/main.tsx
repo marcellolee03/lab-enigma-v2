@@ -7,6 +7,7 @@ import { TimerProvider } from './context/TimerContext.tsx'
 import { SecretCodeProvider } from './context/SecretCodeContext.tsx'
 import Success from './Success.tsx'
 import { ToastProvider } from './lib/Toast.tsx'
+import Home from './Home.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -15,7 +16,8 @@ createRoot(document.getElementById('root')!).render(
         <TimerProvider>
           <SecretCodeProvider>
             <Routes>
-              <Route path="/" element={<App />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/app" element={<App />} />
               <Route path="/success" element={<Success/>} />
             </Routes>
           </SecretCodeProvider>
