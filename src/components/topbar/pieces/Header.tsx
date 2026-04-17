@@ -8,7 +8,7 @@ export default function Header(){
         <img src={main_logo} className="w-auto h-10" />
         <div>
           <p className="text-slate-900 text-sm">Instituto Nacional de Contenção e Biossegurança</p>
-          <p className="text-slate-400 text-xs">SISTEMA DE ANÁLISE</p>
+          <p className="text-slate-400 text-xs">SISTEMA DE ANÁLISE VIA FORMULÁRIO</p>
         </div>
       </div>
     </div>

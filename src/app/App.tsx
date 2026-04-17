@@ -21,21 +21,26 @@ export default function App() {
   
   // helper functions
   const resetRef = useRef<() => void>(null);
-  const { applyPenalty } = useTimerContext()
+  const { startTimer, applyPenalty } = useTimerContext()
   const { revealPartOfCode } = useSecretCodeContext();
   
   // visual flare
   useEffect(() => {
+    function onInitialLoad() {
+      toaster.success("Formulários recebidos com sucesso. Boa sorte");
+      startTimer();
+    }
     if (!toasted.current){
       toaster.custom(
-        { type: "loading",
+        {
+          type: "loading",
           title: "Recebendo formulários...",
-          duration: 6000, 
-          onDone: () => toaster.success("Formulários recebidos com sucesso. Boa sorte.")}
+          duration: 6000,
+          onDone: onInitialLoad} 
       );
       toasted.current = true;
     }
-  }, [toaster])
+  }, [toaster, startTimer])
   
   
   // check state logic
@@ -52,7 +57,7 @@ export default function App() {
       resetRef.current?.()
       
       if (state.type === "fail") {
-        applyPenalty(1 * 60);
+        applyPenalty(20);
       }
       
       if (state.type === "inProgress") {

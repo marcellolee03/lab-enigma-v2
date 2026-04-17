@@ -90,6 +90,7 @@ export const data: Form[] = [
         id: 8,
         answerType: AnswerTypes.ordenation,
         question: "Nos olhos do microbiologista...",
+        hint: "A ordem em que os itens são selecionados importa.",
         options: [
           { id: 1, value: "Meio de cultura"},
           { id: 2, value: "Microscópio"},

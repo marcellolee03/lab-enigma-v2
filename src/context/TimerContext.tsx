@@ -6,7 +6,8 @@ import { useContext, createContext, useState, useEffect, useRef} from "react"
 interface TimerContextType {
     getRemainingTime: () => number,
     applyPenalty: (penalty: number) => void,
-    getIsPenalized: () => boolean
+    getIsPenalized: () => boolean,
+    startTimer: () => void
 }
 
 const TimerContext = createContext<TimerContextType | undefined>(undefined)
@@ -27,26 +28,32 @@ interface TimerProviderProps {
 
 // Context provider. Attributes and methods accessible through useContext
 export function TimerProvider({ children }: TimerProviderProps) {
-    const [ isPenalized, setIsPenalized ] = useState<boolean>(false)
+  const [isPenalized, setIsPenalized] = useState<boolean>(false)
+  const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
     const timeoutRef = useRef<number | null>(null)
 
     // Timer logic
-    const [ remainingTime, setRemainingTime ] = useState<number>(30.2 * 60)
-    useEffect(() => {
-        if (remainingTime === 0) return
+    const [ remainingTime, setRemainingTime ] = useState<number>(30 * 60)
+  useEffect(() => {
+    if (isTimerRunning) {
+      if (remainingTime === 0) return
 
-        const timer = setInterval(() => {
-            setRemainingTime(prevRemainingTime => prevRemainingTime - 1)
-        }, 1000)
+      const timer = setInterval(() => {
+          setRemainingTime(prevRemainingTime => prevRemainingTime - 1)
+      }, 1000)
 
-        return () => clearInterval(timer)
-    }, [remainingTime])
+      return () => clearInterval(timer)
+      }
+    }, [remainingTime, isTimerRunning])
 
     // Timer functions
     function getRemainingTime() {
         return remainingTime
-        
     }
+  
+  function startTimer() {
+    setIsTimerRunning(true)
+  }
 
     const applyPenalty = useCallback((penalty: number) => {
         setRemainingTime(prevRemainingTime => prevRemainingTime - penalty)
@@ -71,7 +78,8 @@ export function TimerProvider({ children }: TimerProviderProps) {
             value ={{
                 getRemainingTime,
                 applyPenalty,
-                getIsPenalized
+                getIsPenalized,
+                startTimer
             }}
         >
             {children}
