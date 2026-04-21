@@ -9,11 +9,17 @@ import { useNavigate } from "react-router-dom";
 import { DelayComponent } from "../lib/DelayComponent";
 import { useToast } from "../lib/Toast";
 import { useFormStates } from "../lib/useFormStates";
+import useSound from "use-sound";
+import correctSfx from "../../public/sfx/correct.mp3";
+import wrongSfx from "../../public/sfx/wrong.mp3";
 
 export default function App() {
   const navigate = useNavigate();
   const toaster = useToast();
   const toasted = useRef(false);
+
+  const [playCorrectSfx] = useSound(correctSfx);
+  const [playWrongSfx] = useSound(wrongSfx);
   
   // data imports
   const forms = data;
@@ -57,6 +63,7 @@ export default function App() {
       resetRef.current?.()
       
       if (state.type === "fail") {
+        playWrongSfx();
         applyPenalty(20);
       }
       
@@ -65,6 +72,7 @@ export default function App() {
       }
       
       if (state.type === "success") {
+        playCorrectSfx();
         revealPartOfCode(index);
       }
     });
