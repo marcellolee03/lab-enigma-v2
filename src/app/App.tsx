@@ -27,7 +27,7 @@ export default function App() {
   
   // helper functions
   const resetRef = useRef<() => void>(null);
-  const { startTimer, applyPenalty } = useTimerContext()
+  const { startTimer, applyPenalty, getRemainingTime } = useTimerContext()
   const { revealPartOfCode } = useSecretCodeContext();
   
   // visual flare
@@ -118,6 +118,13 @@ export default function App() {
       navigate("/success");
     }
   }, [formActionStates.final.state]);
+
+  useEffect(() => {
+    const remainingTime = getRemainingTime();
+    if (remainingTime < 0) {
+      navigate("/failure");
+    }
+  }, [getRemainingTime]);
   
   return (
     <>

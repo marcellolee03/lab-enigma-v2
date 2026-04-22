@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
 const text =
-  "É com um enorme prazer que, em nome das Nações Unidas e de toda a humanidade, agradecemos seus esforços para salvar o mundo. Vocês conseguiram. Parabéns aos grandes heróis.";
+  "Tarde demais. Apesar de seus esforços, a corrida não para e, dessa vez, o microrganismo é o vencedor. Não há tempo para o desenvolvimento da vacina e o sistema de saúde está ruindo. Este laboratório falhou na descoberta do microrganismo."
 
-export default function VictoryPage() {
+export default function FailurePage() {
   const [_tick, setTick] = useState(0);
 
   useEffect(() => {
@@ -14,18 +14,13 @@ export default function VictoryPage() {
     <>
       <style>{`
         :root {
-          --main-green: #10B981;
-          --main-green-light: #DCFCE7;
-          --main-green-dark: #065F46;
+          --main-red: #BE123C;
+          --main-red-light: #FFE4E6;
+          --main-red-dark: #4C0519;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: #fff; overflow: hidden; }
-
-        @keyframes floatUp {
-          0%   { transform: translateY(0) scale(1); opacity: 0.2; }
-          100% { transform: translateY(-100vh) scale(0.2); opacity: 0; }
-        }
 
         @keyframes fadeDown {
           from { opacity: 0; transform: translateY(-24px); }
@@ -47,8 +42,8 @@ export default function VictoryPage() {
           to   { stroke-dashoffset: 0; }
         }
 
-        @keyframes drawCheck {
-          from { stroke-dashoffset: 60; }
+        @keyframes drawX {
+          from { stroke-dashoffset: 50; }
           to   { stroke-dashoffset: 0; }
         }
 
@@ -63,7 +58,7 @@ export default function VictoryPage() {
           100% { background-position: 300% center; }
         }
 
-        .victory-wrapper {
+        .failure-wrapper {
           width: 100vw;
           height: 100vh;
           background: #ffffff;
@@ -76,13 +71,11 @@ export default function VictoryPage() {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
         }
 
-
-
         .corner {
           position: absolute;
           width: 28px;
           height: 28px;
-          border-color: var(--main-green);
+          border-color: var(--main-red);
           border-style: solid;
           opacity: 0.35;
         }
@@ -107,13 +100,13 @@ export default function VictoryPage() {
           font-size: 0.62rem;
           letter-spacing: 0.38em;
           text-transform: uppercase;
-          color: var(--main-green);
+          color: var(--main-red);
           opacity: 0;
           animation: fadeDown 0.7s ease forwards 0.2s;
           font-family: inherit;
         }
 
-        .check-wrap {
+        .icon-wrap {
           position: relative;
           width: 88px;
           height: 88px;
@@ -125,21 +118,22 @@ export default function VictoryPage() {
           position: absolute;
           inset: -12px;
           border-radius: 50%;
-          border: 1.5px solid rgba(16,185,129,0.25);
+          border: 1.5px solid rgba(190,18,60,0.25);
           animation: pulseRing 2.8s ease-in-out infinite;
         }
 
-        .check-wrap svg circle {
+        .icon-wrap svg circle {
           stroke-dasharray: 314;
           stroke-dashoffset: 314;
           animation: drawCircle 1s ease forwards 0.7s;
         }
 
-        .check-wrap svg path {
-          stroke-dasharray: 60;
-          stroke-dashoffset: 60;
-          animation: drawCheck 0.6s ease forwards 1.5s;
+        .icon-wrap svg .x-line {
+          stroke-dasharray: 50;
+          stroke-dashoffset: 50;
         }
+        .icon-wrap svg .x-line-1 { animation: drawX 0.4s ease forwards 1.5s; }
+        .icon-wrap svg .x-line-2 { animation: drawX 0.4s ease forwards 1.8s; }
 
         .title {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
@@ -147,7 +141,7 @@ export default function VictoryPage() {
           font-weight: 700;
           letter-spacing: 0.02em;
           line-height: 1.1;
-          background: linear-gradient(120deg, var(--main-green-dark) 0%, var(--main-green) 45%, var(--main-green-dark) 100%);
+          background: linear-gradient(120deg, var(--main-red-dark) 0%, var(--main-red) 45%, var(--main-red-dark) 100%);
           background-size: 250% auto;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -168,13 +162,13 @@ export default function VictoryPage() {
         .divider-line {
           flex: 1;
           height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(16,185,129,0.35), transparent);
+          background: linear-gradient(90deg, transparent, rgba(190,18,60,0.35), transparent);
         }
 
         .divider-diamond {
           width: 6px;
           height: 6px;
-          background: var(--main-green);
+          background: var(--main-red);
           transform: rotate(45deg);
           opacity: 0.7;
         }
@@ -202,8 +196,8 @@ export default function VictoryPage() {
           width: 7px;
           height: 7px;
           border-radius: 50%;
-          background: var(--main-green);
-          box-shadow: 0 0 0 3px rgba(16,185,129,0.15);
+          background: var(--main-red);
+          box-shadow: 0 0 0 3px rgba(190,18,60,0.15);
           animation: pulseRing 1.8s ease-in-out infinite;
         }
 
@@ -211,7 +205,7 @@ export default function VictoryPage() {
           font-size: 0.68rem;
           letter-spacing: 0.28em;
           text-transform: uppercase;
-          color: var(--main-green-dark);
+          color: var(--main-red-dark);
           font-family: inherit;
           opacity: 0.75;
         }
@@ -222,7 +216,7 @@ export default function VictoryPage() {
           right: 2.5rem;
           font-size: 0.58rem;
           letter-spacing: 0.22em;
-          color: rgba(16,185,129,0.35);
+          color: rgba(190,18,60,0.35);
           font-family: inherit;
           text-transform: uppercase;
           opacity: 0;
@@ -230,37 +224,42 @@ export default function VictoryPage() {
         }
       `}</style>
 
-      <div className="victory-wrapper">
+      <div className="failure-wrapper">
         <div className="corner corner-tl" />
         <div className="corner corner-tr" />
         <div className="corner corner-bl" />
         <div className="corner corner-br" />
 
         <div className="content">
-          <span className="top-label">— Declaração Oficial —</span>
+          <span className="top-label">— Comunicado Oficial —</span>
 
-          <div className="check-wrap">
+          <div className="icon-wrap">
             <div className="pulse-ring" />
             <svg width="88" height="88" viewBox="0 0 100 100" fill="none">
               <circle
                 cx="50" cy="50" r="45"
-                stroke="#10B981"
+                stroke="#BE123C"
                 strokeWidth="2"
-                fill="rgba(16,185,129,0.05)"
+                fill="rgba(190,18,60,0.05)"
               />
-              <path
-                d="M28 51l14 14 30-28"
-                stroke="#065F46"
+              <line
+                className="x-line x-line-1"
+                x1="32" y1="32" x2="68" y2="68"
+                stroke="#4C0519"
                 strokeWidth="4.5"
                 strokeLinecap="round"
-                strokeLinejoin="round"
-                fill="none"
+              />
+              <line
+                className="x-line x-line-2"
+                x1="68" y1="32" x2="32" y2="68"
+                stroke="#4C0519"
+                strokeWidth="4.5"
+                strokeLinecap="round"
               />
             </svg>
           </div>
 
-          <h1 className="title">SUCESSO</h1>
-
+          <h1 className="title">FRACASSO</h1>
           <div className="divider">
             <div className="divider-line" />
             <div className="divider-diamond" />
@@ -271,11 +270,11 @@ export default function VictoryPage() {
 
           <div className="status-row">
             <div className="status-dot" />
-            <span className="status-text">O mundo está salvo</span>
+            <span className="status-text">O mundo não pôde ser salvo</span>
           </div>
         </div>
 
-        <span className="bottom-id">UN · {new Date().getFullYear()} · CONFIRMED</span>
+        <span className="bottom-id">UN · {new Date().getFullYear()} · FAILED</span>
       </div>
     </>
   );
