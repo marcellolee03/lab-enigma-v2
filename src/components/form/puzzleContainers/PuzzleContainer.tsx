@@ -9,9 +9,10 @@ interface PuzzleContainerProps {
   puzzle: Puzzle
   prevValidatedFields: string[],
   onResetRef: React.RefObject<(() => void) | null>
+  scientific?: boolean,
 }
 
-export default function PuzzleContainer({ puzzle, prevValidatedFields, onResetRef }: PuzzleContainerProps) {
+export default function PuzzleContainer({ puzzle, prevValidatedFields, onResetRef, scientific = false }: PuzzleContainerProps) {
   const baseClasses = "flex flex-col shadow-2xl bg-slate-50 rounded-xl p-10 gap-5 text-left";
   
   if (puzzle.answerType === AnswerTypes.open) {
@@ -20,6 +21,7 @@ export default function PuzzleContainer({ puzzle, prevValidatedFields, onResetRe
         <OpenContainer
           puzzle={puzzle}
           baseClasses={baseClasses}
+          scientific={scientific}
         />
       </>
     )

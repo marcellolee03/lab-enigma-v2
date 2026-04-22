@@ -184,6 +184,7 @@ export default function App() {
               formAction={formActionStates.final.action}
               onResetRef={resetRef}
               prevValidatedFields={[]}
+              scientific={true}
             />
           </DelayComponent>
         }

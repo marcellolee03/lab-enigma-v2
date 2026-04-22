@@ -9,9 +9,10 @@ interface FormContainerProps {
   prevValidatedFields: string[],
   onResetRef: React.RefObject<(() => void) | null>,
   formAction: (payload: FormData) => void,
+  scientific?: boolean
 }
 
-export default function FormContainer({ title, puzzles, prevValidatedFields, onResetRef, formAction}: FormContainerProps) {
+export default function FormContainer({ title, puzzles, prevValidatedFields, onResetRef, formAction, scientific = false}: FormContainerProps) {
   return (
     <div className="bg-slate-100 rounded-2xl p-10 shadow-2xl col-span-2 flex flex-col gap-13 animate-slide-in">
       <FormContainerHeader
@@ -28,6 +29,7 @@ export default function FormContainer({ title, puzzles, prevValidatedFields, onR
             onResetRef={onResetRef}
             key={puzzle.id}
             puzzle={puzzle}
+            scientific={scientific}
             />
           ))}
           
