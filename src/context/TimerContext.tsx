@@ -10,7 +10,8 @@ interface TimerContextType {
     getRemainingTime: () => number,
     applyPenalty: (penalty: number) => void,
     getIsPenalized: () => boolean,
-    startTimer: () => void
+    startTimer: () => void,
+    stopTimer: () => void,
 }
 
 const TimerContext = createContext<TimerContextType | undefined>(undefined)
@@ -63,6 +64,10 @@ export function TimerProvider({ children }: TimerProviderProps) {
     setIsTimerRunning(true)
   }
 
+  function stopTimer() {
+    setIsTimerRunning(false)
+  }
+
   useEffect(() => {
     if (isPenalized) {
         playWrongSfx();
@@ -93,7 +98,8 @@ export function TimerProvider({ children }: TimerProviderProps) {
                 getRemainingTime,
                 applyPenalty,
                 getIsPenalized,
-                startTimer
+                startTimer,
+                stopTimer
             }}
         >
             {children}

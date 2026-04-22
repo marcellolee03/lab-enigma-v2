@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
+import { useTimerContext } from "../context/TimerContext";
 
 const text =
   "É com um enorme prazer que, em nome das Nações Unidas e de toda a humanidade, agradecemos seus esforços para salvar o mundo. Vocês conseguiram. Parabéns aos grandes heróis.";
 
 export default function VictoryPage() {
   const [_tick, setTick] = useState(0);
+  const { stopTimer } = useTimerContext();
+  stopTimer();
 
   useEffect(() => {
     setTick(1);
