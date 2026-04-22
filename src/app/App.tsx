@@ -46,55 +46,77 @@ export default function App() {
       );
       toasted.current = true;
     }
-  }, [toaster, startTimer])
-  
-  
-  // check state logic
+  }, [toaster, startTimer]);
+
   useEffect(() => {
-    const formStates = [
-      { state: formActionStates.first.state, index: 0 },
-      { state: formActionStates.second.state, index: 1 },
-      { state: formActionStates.third.state, index: 2 },
-      { state: formActionStates.fourth.state, index: 3 },
-    ]
-    
-    formStates.forEach(({ state, index }) => {
-      if (!state) return;
-      resetRef.current?.()
-      
-      if (state.type === "fail") {
+    const state = formActionStates.first.state;
+    if (!state) return;
+    resetRef.current?.();
+    if (state.type === "fail") {
+      playWrongSfx();
+      applyPenalty(20);
+    }
+    if (state.type === "success") {
+      playCorrectSfx();
+      revealPartOfCode(0);
+    }
+  }, [formActionStates.first.state]);
+
+  useEffect(() => {
+    const state = formActionStates.second.state;
+    if (!state) return;
+    resetRef.current?.();
+    if (state.type === "fail") {
+      playWrongSfx();
+      applyPenalty(20);
+    }
+    if (state.type === "success") {
+      playCorrectSfx();
+      revealPartOfCode(1);
+    }
+  }, [formActionStates.second.state]);
+  
+  useEffect(() => {
+    const state = formActionStates.third.state;
+    if (!state) return;
+    resetRef.current?.();
+    if (state.type === "inProgress") {
+      if (state.mistakeMade) { 
         playWrongSfx();
         applyPenalty(20);
       }
-      
-      if (state.type === "inProgress") {
-        if (state.mistakeMade) { applyPenalty(1 * 60) };
-      }
-      
-      if (state.type === "success") {
-        playCorrectSfx();
-        revealPartOfCode(index);
-      }
-    });
-    
-    // final state check
-    if (formActionStates.final.state) {
-      if (formActionStates.final.state.type === "fail") {
-        applyPenalty(3 * 60);
-      }
-      if (formActionStates.final.state.type === "success") {
-        navigate("/success");
-      }
     }
-    
-  }, [navigate, applyPenalty,
-    formActionStates.first.state,
-    formActionStates.second.state,
-    formActionStates.third.state,
-    formActionStates.fourth.state,
-    formActionStates.final.state, revealPartOfCode])
-  
+    if (state.type === "success") {
+      playCorrectSfx();
+      revealPartOfCode(2);
+    }
+  }, [formActionStates.third.state]);
 
+  useEffect(() => {
+    const state = formActionStates.fourth.state;
+    if (!state) return;
+    resetRef.current?.();
+    if (state.type === "fail") {
+      playWrongSfx();
+      applyPenalty(20);
+    }
+    if (state.type === "success") {
+      playCorrectSfx();
+      revealPartOfCode(3);
+    }
+  }, [formActionStates.fourth.state]);
+
+  useEffect(() => {
+    const state = formActionStates.final.state;
+    if (!state) return;
+    resetRef.current?.();
+    if (state.type === "fail") {
+      applyPenalty(3 * 60);
+    }
+    if (state.type === "success") {
+      navigate("/success");
+    }
+  }, [formActionStates.final.state]);
   
   return (
     <>
