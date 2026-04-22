@@ -1,5 +1,8 @@
 import { useCallback, type ReactNode } from "react"
 import { useContext, createContext, useState, useEffect, useRef} from "react"
+import { useNavigate } from "react-router-dom"
+import useSound from "use-sound";
+import wrongSfx from "../../public/sfx/wrong.mp3";
 
 // CONTEXT and USECONTEXT
 // Setting Context Type. Essentially what the provider will provide.
@@ -30,13 +33,18 @@ interface TimerProviderProps {
 export function TimerProvider({ children }: TimerProviderProps) {
   const [isPenalized, setIsPenalized] = useState<boolean>(false)
   const [isTimerRunning, setIsTimerRunning] = useState<boolean>(false);
-    const timeoutRef = useRef<number | null>(null)
+  const timeoutRef = useRef<number | null>(null)
 
-    // Timer logic
-    const [ remainingTime, setRemainingTime ] = useState<number>(30 * 60)
+  const navigate = useNavigate();
+  const [ playWrongSfx ] = useSound(wrongSfx);
+
+  // Timer logic
+  const [ remainingTime, setRemainingTime ] = useState<number>(30 * 60)
   useEffect(() => {
     if (isTimerRunning) {
-      if (remainingTime === 0) return
+      if (remainingTime < 0) {
+        navigate("/failure");
+      } 
 
       const timer = setInterval(() => {
           setRemainingTime(prevRemainingTime => prevRemainingTime - 1)
@@ -54,6 +62,12 @@ export function TimerProvider({ children }: TimerProviderProps) {
   function startTimer() {
     setIsTimerRunning(true)
   }
+
+  useEffect(() => {
+    if (isPenalized) {
+        playWrongSfx();
+    }
+  }, [isPenalized]);
 
     const applyPenalty = useCallback((penalty: number) => {
         setRemainingTime(prevRemainingTime => prevRemainingTime - penalty)

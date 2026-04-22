@@ -11,7 +11,6 @@ import { useToast } from "../lib/Toast";
 import { useFormStates } from "../lib/useFormStates";
 import useSound from "use-sound";
 import correctSfx from "../../public/sfx/correct.mp3";
-import wrongSfx from "../../public/sfx/wrong.mp3";
 
 export default function App() {
   const navigate = useNavigate();
@@ -19,7 +18,6 @@ export default function App() {
   const toasted = useRef(false);
 
   const [playCorrectSfx] = useSound(correctSfx);
-  const [playWrongSfx] = useSound(wrongSfx);
   
   // data imports
   const forms = data;
@@ -27,7 +25,7 @@ export default function App() {
   
   // helper functions
   const resetRef = useRef<() => void>(null);
-  const { startTimer, applyPenalty, getRemainingTime } = useTimerContext()
+  const { startTimer, applyPenalty } = useTimerContext()
   const { revealPartOfCode } = useSecretCodeContext();
   
   // visual flare
@@ -53,7 +51,6 @@ export default function App() {
     if (!state) return;
     resetRef.current?.();
     if (state.type === "fail") {
-      playWrongSfx();
       applyPenalty(20);
     }
     if (state.type === "success") {
@@ -67,7 +64,6 @@ export default function App() {
     if (!state) return;
     resetRef.current?.();
     if (state.type === "fail") {
-      playWrongSfx();
       applyPenalty(20);
     }
     if (state.type === "success") {
@@ -82,7 +78,6 @@ export default function App() {
     resetRef.current?.();
     if (state.type === "inProgress") {
       if (state.mistakeMade) { 
-        playWrongSfx();
         applyPenalty(20);
       }
     }
@@ -97,7 +92,6 @@ export default function App() {
     if (!state) return;
     resetRef.current?.();
     if (state.type === "fail") {
-      playWrongSfx();
       applyPenalty(20);
     }
     if (state.type === "success") {
@@ -111,7 +105,6 @@ export default function App() {
     if (!state) return;
     resetRef.current?.();
     if (state.type === "fail") {
-      playWrongSfx();
       applyPenalty(3 * 60);
     }
     if (state.type === "success") {
@@ -119,13 +112,6 @@ export default function App() {
     }
   }, [formActionStates.final.state]);
 
-  useEffect(() => {
-    const remainingTime = getRemainingTime();
-    if (remainingTime < 0) {
-      navigate("/failure");
-    }
-  }, [getRemainingTime]);
-  
   return (
     <>
       <Topbar />
