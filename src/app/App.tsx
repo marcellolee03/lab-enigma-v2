@@ -111,6 +111,7 @@ export default function App() {
     if (!state) return;
     resetRef.current?.();
     if (state.type === "fail") {
+      playWrongSfx();
       applyPenalty(3 * 60);
     }
     if (state.type === "success") {
