@@ -231,8 +231,6 @@ export default function FailurePage() {
         <div className="corner corner-br" />
 
         <div className="content">
-          <span className="top-label">— Comunicado Oficial —</span>
-
           <div className="icon-wrap">
             <div className="pulse-ring" />
             <svg width="88" height="88" viewBox="0 0 100 100" fill="none">
@@ -264,13 +262,6 @@ export default function FailurePage() {
             <div className="divider-line" />
             <div className="divider-diamond" />
             <div className="divider-line" />
-          </div>
-
-          <p className="message">"{text}"</p>
-
-          <div className="status-row">
-            <div className="status-dot" />
-            <span className="status-text">O mundo não pôde ser salvo</span>
           </div>
         </div>
 

@@ -11,7 +11,7 @@ export default function AskHelpButton() {
       <div className="flex flex-col gap-1">
         <div className="flex items-center justify-center gap-1">
           <UserIcon />
-          <p className="text-sm font-semibold">Central INCB</p>
+          <p className="text-sm font-semibold">Central DCQ</p>
         </div>
         <p className="font-bold text-xl">Solicitar Auxílio</p>
         <p className="text-xs text-slate-100">OBS: Utilizar com moderação</p>

@@ -240,8 +240,6 @@ export default function VictoryPage() {
         <div className="corner corner-br" />
 
         <div className="content">
-          <span className="top-label">— Declaração Oficial —</span>
-
           <div className="check-wrap">
             <div className="pulse-ring" />
             <svg width="88" height="88" viewBox="0 0 100 100" fill="none">
@@ -262,19 +260,12 @@ export default function VictoryPage() {
             </svg>
           </div>
 
-          <h1 className="title">SUCESSO</h1>
+          <h1 className="title">VITÓRIA</h1>
 
           <div className="divider">
             <div className="divider-line" />
             <div className="divider-diamond" />
             <div className="divider-line" />
-          </div>
-
-          <p className="message">"{text}"</p>
-
-          <div className="status-row">
-            <div className="status-dot" />
-            <span className="status-text">O mundo está salvo</span>
           </div>
         </div>
 

@@ -13,17 +13,12 @@ export default function Home() {
           <div className="flex gap-2 pl-5 pr-50 border-b border-slate-300 py-5">
             <img src={main_logo} className="w-auto h-10" />
             <div>
-              <p className="text-slate-900 text-sm">Instituto Nacional de Contenção e Biossegurança</p>
+              <p className="text-slate-900 text-sm">Departamento de Controle de Qualidade</p>
               <p className="text-slate-400 text-xs">RECEBIMENTO DE FORMULÁRIO</p>
             </div>
           </div>
           
           <div className="flex flex-col items-center gap-5">
-            <div className="rounded-xl bg-(--main-green-light) px-10 text-left font-semibold py-5">
-              <p>Prioridade: 0</p>
-              <p>Remetente: Dr. Rafael Martins</p>
-            </div>
-            
             <div className="relative w-64 h-16">
               <div className="bg-(--main-green-light) w-full h-full py-4 px-4 animate-ping rounded-xl " />
               <button
